@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html = lang"en">
+
+    <head>
+        <meta charset"utf-8">
+        <title>Weather</title>
+        <link rel="stylesheet" type="text/css" href="style.css"
+    </head>
+
+<body>
+    <div class="container">
+            
+        <div class="search-box">
+            <input type="text" placeholder="Enter Location Here:">
+            <button class="search-button" id="search-button"> </button>
+        </div>
+
+        <div class="location-details">
+            <div>
+                <img src = "pictures/long-arrow-pointing-up.png" class="weather-picture" id="weather-picture" alt="picture"></img>
+            </div>
+
+            <div>
+                <h1 class="city-name"> Type Your City Above </h1>
+            </div>
+        </div>
+        
+        <div class="weather-holder">
+            <div class="weather-details-first-col">
+                <div class="temp">
+                    <img src="pictures/science-thermometer.png" class="thermometerIMG" alt="thermometer"> </img>
+                    <b>Temperature:</b>
+                    <p class="temperature">TBD</p>
+                </div>
+    
+                <div class="feels">
+                    <img src="pictures/science-thermometer.png" class="thermometerIMG" alt="thermometer"> </img>
+                    <b>Feels Like:</b>
+                    <p class="feels-like">TBD</p>
+                </div>
+            </div>
+
+            <div class="weather-details-second-col">
+                <div>
+                    <img src="pictures/wind.png" class="windIMG" alt="wind"> </img>
+                    <b>Wind Speed:</b>
+                    <p class="wind">TBD</p>
+                </div>
+            
+                <div>
+                    <img src="pictures/humidity.png" class="humidityIMG" alt="water"> </img>
+                    <b>Humidity:</b>
+                    <p class="humidity">TBD</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const APIKey = "38790295ebc34769bd4134425243103";
+        const APIURL = "http://api.weatherapi.com/v1/current.json?key=";
+
+        const searchButtonPressed = document.querySelector(".search-button");
+        const searchedCity = document.querySelector(".search-box input");
+
+        async function fetchWeather(city) {
+            //getting api data
+            const response = await fetch(APIURL + APIKey + `&q=${city}`);
+            const weather = await response.json();
+
+            //outputting the weather data to the text on screen
+            //console.log(weather)
+            document.querySelector(".city-name").innerHTML = weather.location.name;
+            document.querySelector(".temperature").innerHTML = weather.current.temp_f + "°F";
+            document.querySelector(".feels-like").innerHTML = weather.current.feelslike_f + "°F";
+            document.querySelector(".wind").innerHTML = weather.current.wind_mph + " MPH";
+            document.querySelector(".humidity").innerHTML = weather.current.humidity + "%";
+
+            //making the weather image be the one returned by the API
+            const weatherIMG = weather.current.condition.icon;
+            document.getElementById("weather-picture").src = weatherIMG;
+
+        }
+
+        //make the search button execute our code to get the weather
+        searchButtonPressed.addEventListener("click", ()=>{
+            fetchWeather(searchedCity.value);
+        })
+
+    </script
+</body>
+</html>

@@ -1,0 +1,90 @@
+body {
+    background: linear-gradient(170deg, #5f9ac7, #0f4670);
+    font-family: "Geneva", Sans-serif;
+    margin: 0px;
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    position: relative;
+    width: 500px;
+    height:500px;
+    justify-content: center;
+    border-radius: 12px;
+    border-width: 5px;
+    overflow: hidden;
+    background: #fff;
+    padding: 22px 32px;
+}
+
+.search-box{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.search-box input{
+    height: 43px;
+    width: 400px;
+    border-radius: 6px;
+    padding: 2px 2px;
+    font-family: "Geneva", Sans-serif;
+    font-size: 30px;
+    border-color: #0903a3;
+}
+
+.search-box button{
+    height: 40px;
+    width: 40px;
+    border-color: #0903a3;
+    cursor: pointer;
+    background-image: url(pictures/icons8-search-50.png);
+    background-position: center;
+    background-size: cover;
+}
+
+.location-details{
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.weather-picture{
+    width: 200px;
+    height: 200px;
+}
+
+.weather-holder{
+    display: flex;
+    justify-content: space-between;
+}
+
+.weather-details-first-col, .weather-details-second-col{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: left;
+}
+
+.weather-details-first-col .thermometerIMG{
+    height: 20px;
+    width: 20px;
+}
+
+.weather-details-second-col .windIMG{
+    height: 20px;
+    width: 20px;
+}
+
+.weather-details-second-col .humidityIMG{
+    height: 20px;
+    width: 20px;
+}
+
+.weather-details-first-col .temperature, .weather-details-first-col .feels-like{
+    justify-content: center;
+}
